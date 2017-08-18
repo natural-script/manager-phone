@@ -4653,75 +4653,7 @@ sentMessageRaw.BLOBObject = BLOBObject;
 		}
 	});
 
-
-  } else if (recievedMessageRaw.data.type == 'framework' && recievedMessageRaw.data.command == 'request'){
-var URLID = encodeURIComponent(recievedMessageRaw.data.url).replace(/\./g, '%2E');
-	var db = new Dexie('Jste');
-	db.version(1).stores({
-		BLOBs: 'URLID, BLOBObject'
-	});
-	db.open().catch(function (error) {
-		alert('Uh oh : ' + error);
-	});
-
-	db.BLOBs.where("URLID").equals(URLID).count(function (itemsNO) {
-		if (itemsNO == 1) {
-			db.BLOBs.where("URLID").equals(URLID).each(function (BLOB) {
-var sentMessageRaw = [];
-sentMessageRaw.type = recievedMessageRaw.data.type;
-sentMessageRaw.BLOBObject = BLOB.BLOBObject;
-				window.parent.postMessage(sentMessageRaw, '*');
-			});
-		} else if (itemsNO == 0) {
-			var xhr = new XMLHttpRequest(),
-				BLOBObject;
-			xhr.open("GET", recievedMessageRaw.data.url, true);
-			xhr.responseType = "blob";
-			xhr.addEventListener("load", function () {
-				if (xhr.status === 200) {
-					BLOBObject = xhr.response;
-					db.BLOBs.add({
-						URLID: URLID,
-						BLOBObject: BLOBObject
-					});
-var sentMessageRaw = [];
-sentMessageRaw.type = recievedMessageRaw.data.type;
-sentMessageRaw.BLOBObject = BLOBObject;
-					window.parent.postMessage(sentMessageRaw, '*');
-				}
-			}, false);
-			xhr.send();
-		}
-	});
-
-} else if (recievedMessageRaw.data.type == 'framework' && recievedMessageRaw.data.command == 'overwrite'){
-var URLID = encodeURIComponent(recievedMessageRaw.data.url).replace(/\./g, '%2E');
-	var db = new Dexie('Jste');
-	db.version(1).stores({
-		BLOBs: 'URLID, BLOBObject'
-	});
-	db.open().catch(function (error) {
-		alert('Uh oh : ' + error);
-	});
-
-
-			var xhr = new XMLHttpRequest(),
-				BLOBObject;
-			xhr.open("GET", recievedMessageRaw.data.url, true);
-			xhr.responseType = "blob";
-			xhr.addEventListener("load", function () {
-				if (xhr.status === 200) {
-					BLOBObject = xhr.response;
-db.BLOBs.where("URLID").equals(URLID).modify({BLOBObject: BLOBObject});
-var sentMessageRaw = [];
-sentMessageRaw.type = recievedMessageRaw.data.type;
-sentMessageRaw.BLOBObject = BLOBObject;
-					window.parent.postMessage(sentMessageRaw, '*');
-				}
-			}, false);
-			xhr.send();
-
-}
+  } 
 
   }
 
