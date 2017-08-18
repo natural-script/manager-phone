@@ -10,6 +10,10 @@ var inter = setInterval(function() {
       if (err) {
         alert(JSON.stringify(err));
       } else {
+cordova.plugins.backgroundMode.setDefaults({
+    title: 'Jste Manager is running',
+    text: 'Enjoy surfing all sites powered by Jste'
+});
 	cordova.plugins.autoStart.enable();
 	cordova.plugins.backgroundMode.enable();
 	cordova.plugins.backgroundMode.overrideBackButton();
