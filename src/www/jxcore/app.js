@@ -9,6 +9,7 @@ const cors_proxy = require('cors-anywhere');
 const root = 'assets';
 const appConfigDir = '/sdcard/Android/data/com.jste.manager';
 const managerConfigDB = new JsonDB(appConfigDir + "/managerConfigDB", true, false);
+const dataURLsDB = new JsonDB(appConfigDir + "/dataURLsDB", true, false);
 const app = express();
 app.use(cors());
 app.use(bodyParser());
@@ -77,6 +78,25 @@ app.post('/adminPasswordVerification', function (req, res) {
   } else {
     res.send('Authentication failed :(');
   }
+});
+
+app.post('/verifyDataURL', function (req, res) {
+  if (dataURLsDB.getData('/')[req.body.URLID]) {
+    res.send('exists');
+  } else {
+    res.send('not exist');
+  }
+});
+
+app.post('/getDataURL', function (req, res) {
+  res.send(dataURLsDB.getData('/')[req.body.URLID]);
+});
+
+app.post('/insertDataURL', function (req, res) {
+  dataURLsDB.push('/', {
+    [req.body.URLID]: req.body.dataURL
+  }, false);
+  res.send('The data URL has been saved successfuly ;)');
 });
 
 var localAddress = '0.0.0.0' || 'localhost';
