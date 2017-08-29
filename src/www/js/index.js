@@ -64,7 +64,7 @@ var inter = setInterval(function () {
                   $('#switch1').prop('checked', true);
                 }
               });
-            } else if ($('#switch1').prop('checked') == false) {
+            } else if ($('#switch1').prop('checked') == true) {
               $.post('http://0.0.0.0:5050/childModeActivate', {
                 adminPassword: sessionStorage.adminPassword
               }).done(function (data) {

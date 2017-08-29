@@ -24,7 +24,7 @@ app.post('/setAdminPassword', function (req, res) {
     if (managerConfigDB.getData('/').adminPassword == req.body.oldPassword) {
       managerConfigDB.push('/', {
         adminPassword: req.body.newPassword
-      });
+      }, false);
       res.send('The admin password has been set successfuly ;)');
     } else {
       res.send('Authentication failed :(');
@@ -32,7 +32,7 @@ app.post('/setAdminPassword', function (req, res) {
   } else {
     managerConfigDB.push('/', {
       adminPassword: req.body.newPassword
-    });
+    }, false);
     res.send('The admin password has been set successfuly ;)');
   }
 });
@@ -41,7 +41,7 @@ app.post('/childModeActivate', function (req, res) {
   if (req.body.adminPassword && req.body.adminPassword == managerConfigDB.getData('/').adminPassword) {
     managerConfigDB.push('/', {
       childMode: 'on'
-    });
+    }, false);
     res.send('Child mode has been activated successfuly ;)');
   } else {
     res.send('Authentication failed :(');
@@ -52,7 +52,7 @@ app.post('/childModeDeactivate', function (req, res) {
   if (req.body.adminPassword && req.body.adminPassword == managerConfigDB.getData('/').adminPassword) {
     managerConfigDB.push('/', {
       childMode: 'off'
-    });
+    }, false);
     res.send('Child mode has been deactivated successfuly ;)');
   } else {
     res.send('Authentication failed :(');
