@@ -5,6 +5,7 @@
     "cors-anywhere",
     "http-static-gzip-regexp",
     "node-json-db",
+    "remote-file-size",
     "body-parser"
   ]
 }
