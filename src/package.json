@@ -1,14 +1,14 @@
 {
-    "name": "helloworld",
-    "displayName": "HelloCordova",
+    "name": "JsteManager",
+    "displayName": "Jste Manager",
     "version": "1.0.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "description": "The official Jste Manager for Android & IOS",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Apache Cordova Team",
-    "license": "Apache-2.0",
+    "author": "Jste Team",
+    "license" : "AGPL-3.0+",
     "dependencies": {
         "cordova-android": "^6.2.3",
         "cordova-plugin-autostart": "^2.0.1",
