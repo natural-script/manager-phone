@@ -3,8 +3,8 @@
     "express@4.12.3",
     "cors",
     "cors-anywhere",
-    "http-static-gzip-regexp",
     "node-json-db",
+    "express-device",
     "remote-file-size",
     "body-parser"
   ]

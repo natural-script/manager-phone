@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' data: gap: 'unsafe-eval';
+    style-src * 'self' 'unsafe-inline'; 
+    connect-src * ; 
+    script-src * 'self' 'unsafe-inline'; 
+    media-src *">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jste Manager</title>
+    <link rel="shortcut icon" href="res/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="res/CSS/Google Material Icons.css">
+    <script src="res/JS/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="res/CSS/material.min.css">
+    <script src="res/JS/material.min.js"></script>
+    <script src="res/JS/utils.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="res/JS/script.js"></script>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span id="pageTitle" class="mdl-layout-title">Jste Manager</span>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <page id="login" style="display: none;">
+                    <div id="loginFormContainer" style="position: fixed;left: 35%;top: 43%;">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" name="newPassword" type="password" id="adminPasswordInput">
+                            <label class="mdl-textfield__label" for="adminPasswordInput">Enter Your Password To Login</label>
+                        </div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="loginBtn">
+                                        Login
+                                      </button>
+                    </div>
+                </page>
+                <page id="settings" style="display: none;">
+                    <label for="switch1" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                        <input type="checkbox" id="switch1" class="mdl-switch__input">
+                        <span class="mdl-switch__label">Child Mode</span>
+                      </label>
+
+                    <form id="passwordSubmitForm" action="http://0.0.0.0:5050/setAdminPassword" method="post">
+                        <div class="mdl-textfield mdl-js-textfield" id="oldPasswordInput_container" style="display: none;">
+                            <input class="mdl-textfield__input" type="password" name="oldPassword" id="oldPasswordInput">
+                            <label class="mdl-textfield__label" for="oldPasswordInput">Old Password</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <input class="mdl-textfield__input" name="newPassword" type="password" id="newPasswordInput">
+                            <label class="mdl-textfield__label" for="newPasswordInput">New Password</label>
+                        </div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+                                    Set password
+                                  </button>
+                    </form>
+                </page>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

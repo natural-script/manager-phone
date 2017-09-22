@@ -1,26 +1,38 @@
 {
     "name": "JsteManager",
     "displayName": "Jste Manager",
-    "version": "1.0.0",
-    "description": "The official Jste Manager for Android & IOS",
+    "version": "0.1.0",
+    "description": "The official Jste Manager app.",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Jste Team",
-    "license" : "AGPL-3.0+",
+    "license": "AGPL-3.0+",
     "dependencies": {
+        "com.darktalker.cordova.screenshot": "git+https://github.com/gitawego/cordova-screenshot.git",
         "cordova-android": "^6.2.3",
         "cordova-plugin-autostart": "^2.0.1",
         "cordova-plugin-background-mode": "^0.7.2",
+        "cordova-plugin-bluetooth-status": "^1.0.4",
         "cordova-plugin-compat": "^1.1.0",
         "cordova-plugin-crosswalk-webview": "^2.3.0",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-flashlight": "^3.2.0",
+        "cordova-plugin-inappbrowser": "^1.7.1",
+        "cordova-plugin-keyboard": "^1.1.5",
         "cordova-plugin-media": "^3.0.1",
+        "cordova-plugin-recentscontrol": "git+https://github.com/smcpjames/cordova-plugin-recentscontrol.git",
+        "cordova-plugin-remote-injection": "^0.5.2",
+        "cordova-plugin-screen-orientation": "^2.0.1",
+        "cordova-plugin-urlhandler": "^0.7.2",
         "cordova-plugin-whitelist": "^1.3.2",
+        "es6-promise-plugin": "git+https://github.com/vstirbu/PromisesPlugin.git",
         "io.jxcore.node": "io.jxcore.node",
-        "jxcore-cordova": "file:io.jxcore.node"
+        "jxcore-cordova": "file:io.jxcore.node",
+        "wifiwizard": "^0.2.11",
+        "com.pylonproducts.wifiwizard": "~0.2.11"
     },
     "cordova": {
         "plugins": {
@@ -28,6 +40,7 @@
             "cordova-plugin-autostart": {},
             "cordova-plugin-background-mode": {},
             "io.jxcore.node": {},
+            "cordova-plugin-media": {},
             "cordova-plugin-crosswalk-webview": {
                 "XWALK_VERSION": "23+",
                 "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
@@ -35,7 +48,18 @@
                 "XWALK_MODE": "embedded",
                 "XWALK_MULTIPLEAPK": "true"
             },
-            "cordova-plugin-media": {}
+            "cordova-plugin-remote-injection": {},
+            "cordova-plugin-urlhandler": {
+                "URL_SCHEME": "jste"
+            },
+            "cordova-plugin-inappbrowser": {},
+            "com.darktalker.cordova.screenshot": {},
+            "cordova-plugin-recentscontrol": {},
+            "cordova-plugin-flashlight": {},
+            "com.pylonproducts.wifiwizard": {},
+            "cordova-plugin-bluetooth-status": {},
+            "cordova-plugin-screen-orientation": {},
+            "cordova-plugin-keyboard": {}
         },
         "platforms": [
             "android"
