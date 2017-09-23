@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const JsonDB = require('node-json-db');
 const cors_proxy = require('cors-anywhere');
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const root = 'assets';
 const appConfigDir = '/sdcard/Android/data/com.jste.manager';
 const managerConfigDB = new JsonDB(appConfigDir + "/managerConfigDB", true, false);
@@ -109,6 +110,26 @@ app.post('/getFileSize', function (req, res) {
 
 app.get('/deviceForm', function (req, res) {
   res.send(req.device.type);
+});
+
+app.post('/getVideoInfo', function (req, res) {
+  var request = new XMLHttpRequest();
+  request.open('POST', 'https://loadercdn.io/api/v1/create');
+
+  request.setRequestHeader('Content-Type', 'application/json');
+
+  request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      res.send(this.responseText);
+    }
+  };
+
+  var body = {
+    'key': 'EatRoyUhJZVyhfI2V4dUNuwiDrTooY6T7fG5bQw',
+    'link': req.body.url
+  };
+
+  request.send(JSON.stringify(body));
 });
 
 var localAddress = '0.0.0.0' || 'localhost';

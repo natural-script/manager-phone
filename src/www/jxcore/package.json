@@ -4,6 +4,7 @@
     "cors",
     "cors-anywhere",
     "node-json-db",
+    "xmlhttprequest",
     "express-device",
     "remote-file-size",
     "body-parser"
