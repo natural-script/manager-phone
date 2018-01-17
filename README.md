@@ -16,6 +16,8 @@ Jste Manager Android and IOS versions are built using Apache Cordova, so to buil
 
 4. Xcode ( For IOS )
 
+5. JX Binary
+
 ### How to install the dependencies:
 
 <code>cd <MANAGER-PHONE_REPO_ROOT>/src</code>
@@ -27,6 +29,10 @@ in the case that you want to build Jste Manager Android version or:
 <code>cordova prepare ios</code>
 
 in the case that you want to build Jste Manager IOS version.
+
+<code>jx io.jxcore.node.jx</code>
+
+<code>cordova plugins add io.jxcore.node/</code>
 
 ### How to build:
 

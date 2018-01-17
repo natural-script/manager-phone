@@ -11,6 +11,7 @@
     "license": "AGPL-3.0+",
     "dependencies": {
         "com.darktalker.cordova.screenshot": "git+https://github.com/gitawego/cordova-screenshot.git",
+        "com.pylonproducts.wifiwizard": "~0.2.11",
         "cordova-android": "^6.2.3",
         "cordova-plugin-autostart": "^2.0.1",
         "cordova-plugin-background-mode": "^0.7.2",
@@ -31,8 +32,7 @@
         "es6-promise-plugin": "git+https://github.com/vstirbu/PromisesPlugin.git",
         "io.jxcore.node": "io.jxcore.node",
         "jxcore-cordova": "file:io.jxcore.node",
-        "wifiwizard": "^0.2.11",
-        "com.pylonproducts.wifiwizard": "~0.2.11"
+        "wifiwizard": "^0.2.11"
     },
     "cordova": {
         "plugins": {
