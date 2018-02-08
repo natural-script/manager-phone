@@ -13,11 +13,19 @@ const getFileSize = require('remote-file-size');
 const dataURLsDB = new JsonDB(appConfigDir + "/dataURLsDB", true, false);
 const app = express();
 const device = require('express-device');
+const favicon = require('serve-favicon');
+const translate = require('google-translate-api');
 app.use(device.capture());
 app.use(cors());
-app.use(bodyParser({
-  limit: '50mb'
+app.use(bodyParser.urlencoded({
+  limit: '50mb',
+  extended: true
 }));
+app.use(bodyParser.json({
+  limit: '50mb',
+  type: 'application/json'
+}));
+app.use(favicon(path.join(__dirname, root, 'favicon.ico')));
 
 app.use(express.static(root));
 
@@ -110,6 +118,15 @@ app.post('/getFileSize', function (req, res) {
 
 app.get('/deviceForm', function (req, res) {
   res.send(req.device.type);
+});
+
+app.post('/autoCorrect', function (req, res) {
+  translate(req.body.input, {
+    from: req.body.lang,
+    to: req.body.lang
+  }).then(result => {
+    res.send(result.text);
+  });
 });
 
 app.post('/getVideoInfo', function (req, res) {

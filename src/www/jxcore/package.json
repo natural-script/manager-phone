@@ -1,12 +1,14 @@
 {
   "dependencies": [
-    "express@4.12.3",
+    "express",
     "cors",
     "cors-anywhere",
     "node-json-db",
     "xmlhttprequest",
     "express-device",
     "remote-file-size",
-    "body-parser"
+    "body-parser",
+    "serve-favicon",
+    "google-translate-api"
   ]
 }
