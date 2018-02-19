@@ -13,7 +13,10 @@
     <link rel="shortcut icon" href="res/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="res/CSS/Google Material Icons.css">
     <script src="res/JS/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="res/CSS/materialize.min.css">
     <link rel="stylesheet" href="res/CSS/material.min.css">
+    <link rel="stylesheet" href="res/CSS/style.css">
+    <script src="res/JS/materialize.min.js"></script>
     <script src="res/JS/material.min.js"></script>
     <script src="res/JS/utils.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
@@ -25,44 +28,63 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span id="pageTitle" class="mdl-layout-title">Jste Manager</span>
+                <span id="pageTitle" class="mdl-layout-title" style="margin-left: -40px;">Jste Manager</span>
             </div>
         </header>
 
-        <main class="mdl-layout__content">
-            <div class="page-content">
-                <page id="login" style="display: none;">
-                    <div id="loginFormContainer" style="position: fixed;left: 35%;top: 43%;">
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" name="newPassword" type="password" id="adminPasswordInput">
-                            <label class="mdl-textfield__label" for="adminPasswordInput">Enter Your Password To Login</label>
-                        </div>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="loginBtn">
-                                        Login
-                                      </button>
-                    </div>
-                </page>
-                <page id="settings" style="display: none;">
-                    <label for="switch1" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
-                        <input type="checkbox" id="switch1" class="mdl-switch__input">
-                        <span class="mdl-switch__label">Child Mode</span>
-                      </label>
 
-                    <form id="passwordSubmitForm" action="http://0.0.0.0:5050/setAdminPassword" method="post">
-                        <div class="mdl-textfield mdl-js-textfield" id="oldPasswordInput_container" style="display: none;">
-                            <input class="mdl-textfield__input" type="password" name="oldPassword" id="oldPasswordInput">
-                            <label class="mdl-textfield__label" for="oldPasswordInput">Old Password</label>
+        <div class="page-content">
+            <page id="login" style="display: none;">
+                    <center>
+                        <div id="loginFormContainer">
+                            <img src="res/img/password.png" />
+                            <div class="input-field">
+                                <input id="adminPasswordInput" name="newPassword" type="password">
+                                <label for="adminPasswordInput">Password</label>
+                            </div>
+                            <br>
+
+                            <button class="btn waves-effect waves-light pink" id="loginBtn">Login
+                                <i class="material-icons right">send</i>
+                            </button>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" name="newPassword" type="password" id="newPasswordInput">
-                            <label class="mdl-textfield__label" for="newPasswordInput">New Password</label>
-                        </div>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
-                                    Set password
-                                  </button>
-                    </form>
-                </page>
-            </div>
+                    </center>
+            </page>
+            <page id="settings" style="display: none;">
+
+                    <div style="margin: 20px 0 0 20px;">
+                <div class="switch">
+                    <b>Nudity Detection</b>
+                    <label>
+                        <input type="checkbox" id="nudityDetectionSwitch">
+                        <span class="lever"></span>
+                    </label>
+                </div>
+                <div class="switch">
+                    <b>Child Mode</b>
+                    <label>
+                        <input type="checkbox" id="childModeSwitch">
+                        <span class="lever"></span>
+                    </label>
+                </div>
+
+                <form id="passwordSubmitForm" style="width: 90%;" action="http://0.0.0.0:5050/setAdminPassword" method="post">
+                    <h3>Change Admin Password</h3>
+                    <div id="oldPasswordInput_container" class="input-field" style="display: none;">
+                        <input id="oldPasswordInput" name="oldPassword" type="password" class="validate">
+                        <label for="oldPasswordInput">Old Password</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="newPasswordInput" name="newPassword" type="password" class="validate">
+                        <label for="newPasswordInput">New Password</label>
+                    </div>
+                    <button class="btn waves-effect waves-light pink" type="submit" name="action">Set Password
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+                </div>
+            </page>
+        </div>
         </main>
     </div>
 </body>

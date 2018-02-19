@@ -8,7 +8,6 @@
     "express-device",
     "remote-file-size",
     "body-parser",
-    "serve-favicon",
-    "google-translate-api"
+    "serve-favicon"
   ]
 }

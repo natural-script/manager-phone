@@ -1,0 +1,9 @@
+#loginFormContainer {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

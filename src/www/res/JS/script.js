@@ -4,9 +4,16 @@ $(function () {
     };
     $.get("http://0.0.0.0:5050/childModeStatus", function (data) {
         if (data == 'off') {
-            $('#switch1').prop('checked', false);
+            $('#childModeSwitch').prop('checked', false);
         } else if (data == 'on') {
-            $('#switch1').prop('checked', true);
+            $('#childModeSwitch').prop('checked', true);
+        }
+    });
+    $.get("http://0.0.0.0:5050/nudityDetectionStatus", function (data) {
+        if (data == 'off') {
+            $('#nudityDetectionSwitch').prop('checked', false);
+        } else if (data == 'on') {
+            $('#nudityDetectionSwitch').prop('checked', true);
         }
     });
     $.get("http://0.0.0.0:5050/adminPasswordStatus", function (data) {
@@ -36,21 +43,40 @@ $(function () {
         });
         return false;
     });
-    $('#switch1').on('change', function () {
-        if ($('#switch1').prop('checked') == false) {
+    $('#childModeSwitch').on('change', function () {
+        if ($('#childModeSwitch').prop('checked') == false) {
             $.post('http://0.0.0.0:5050/childModeDeactivate', {
                 adminPassword: sessionStorage.adminPassword
             }).done(function (data) {
                 if (data == 'Authentication failed :(') {
-                    $('#switch1').prop('checked', true);
+                    $('#childModeSwitch').prop('checked', true);
                 }
             });
-        } else if ($('#switch1').prop('checked') == true) {
+        } else if ($('#childModeSwitch').prop('checked') == true) {
             $.post('http://0.0.0.0:5050/childModeActivate', {
                 adminPassword: sessionStorage.adminPassword
             }).done(function (data) {
                 if (data == 'Authentication failed :(') {
-                    $('#switch1').prop('checked', false);
+                    $('#childModeSwitch').prop('checked', false);
+                }
+            });
+        }
+    });
+    $('#nudityDetectionSwitch').on('change', function () {
+        if ($('#nudityDetectionSwitch').prop('checked') == false) {
+            $.post('http://0.0.0.0:5050/nudityDetectionDeactivate', {
+                adminPassword: sessionStorage.adminPassword
+            }).done(function (data) {
+                if (data == 'Authentication failed :(') {
+                    $('#nudityDetectionSwitch').prop('checked', true);
+                }
+            });
+        } else if ($('#nudityDetectionSwitch').prop('checked') == true) {
+            $.post('http://0.0.0.0:5050/nudityDetectionActivate', {
+                adminPassword: sessionStorage.adminPassword
+            }).done(function (data) {
+                if (data == 'Authentication failed :(') {
+                    $('#nudityDetectionSwitch').prop('checked', false);
                 }
             });
         }

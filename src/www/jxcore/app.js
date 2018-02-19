@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const clog = require('./utilities').log;
 const express = require('express');
 const cors = require('cors');
@@ -14,7 +15,6 @@ const dataURLsDB = new JsonDB(appConfigDir + "/dataURLsDB", true, false);
 const app = express();
 const device = require('express-device');
 const favicon = require('serve-favicon');
-const translate = require('google-translate-api');
 app.use(device.capture());
 app.use(cors());
 app.use(bodyParser.urlencoded({
@@ -29,7 +29,7 @@ app.use(favicon(path.join(__dirname, root, 'favicon.ico')));
 
 app.use(express.static(root));
 
-var server = app.listen(5050, function () {});
+var server = app.listen(5050);
 
 app.post('/setAdminPassword', function (req, res) {
   if (managerConfigDB.getData('/').adminPassword) {
@@ -83,6 +83,40 @@ app.get('/adminPasswordStatus', function (req, res) {
   }
 });
 
+app.post('/nudityDetectionActivate', function (req, res) {
+  if (req.body.adminPassword && req.body.adminPassword == managerConfigDB.getData('/').adminPassword) {
+    managerConfigDB.push('/', {
+      nudityDetection: 'on'
+    }, false);
+    res.send('Child mode has been activated successfuly ;)');
+  } else {
+    res.send('Authentication failed :(');
+  }
+});
+
+app.post('/nudityDetectionDeactivate', function (req, res) {
+  if (req.body.adminPassword && req.body.adminPassword == managerConfigDB.getData('/').adminPassword) {
+    managerConfigDB.push('/', {
+      nudityDetection: 'off'
+    }, false);
+    res.send('Child mode has been deactivated successfuly ;)');
+  } else {
+    res.send('Authentication failed :(');
+  }
+});
+
+app.get('/nudityDetectionStatus', function (req, res) {
+  res.send(managerConfigDB.getData('/').nudityDetection);
+});
+
+app.get('/adminPasswordStatus', function (req, res) {
+  if (managerConfigDB.getData('/').adminPassword) {
+    res.send('set');
+  } else {
+    res.send('not set');
+  }
+});
+
 app.post('/adminPasswordVerification', function (req, res) {
   if (managerConfigDB.getData('/').adminPassword == req.body.adminPassword) {
     res.send('You have been logged in successfuly ;)');
@@ -121,12 +155,7 @@ app.get('/deviceForm', function (req, res) {
 });
 
 app.post('/autoCorrect', function (req, res) {
-  translate(req.body.input, {
-    from: req.body.lang,
-    to: req.body.lang
-  }).then(result => {
-    res.send(result.text);
-  });
+  res.redirect(307, "https://jste-manager.herokuapp.com/autoCorrect");
 });
 
 app.post('/getVideoInfo', function (req, res) {
