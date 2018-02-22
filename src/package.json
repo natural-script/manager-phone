@@ -11,13 +11,12 @@
     "license": "AGPL-3.0+",
     "dependencies": {
         "com.darktalker.cordova.screenshot": "git+https://github.com/gitawego/cordova-screenshot.git",
-        "com.pylonproducts.wifiwizard": "~0.2.11",
-        "cordova-android": "^6.2.3",
+        "com.pylonproducts.wifiwizard": "git+https://github.com/hoerresb/WifiWizard.git",
+        "cordova-android": "^6.4.0",
         "cordova-plugin-autostart": "^2.0.1",
         "cordova-plugin-background-mode": "^0.7.2",
         "cordova-plugin-bluetooth-status": "^1.0.4",
-        "cordova-plugin-compat": "^1.1.0",
-        "cordova-plugin-crosswalk-webview": "^2.3.0",
+        "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-file": "^4.3.3",
         "cordova-plugin-flashlight": "^3.2.0",
@@ -30,9 +29,8 @@
         "cordova-plugin-urlhandler": "^0.7.2",
         "cordova-plugin-whitelist": "^1.3.2",
         "es6-promise-plugin": "git+https://github.com/vstirbu/PromisesPlugin.git",
-        "io.jxcore.node": "io.jxcore.node",
-        "jxcore-cordova": "file:io.jxcore.node",
-        "wifiwizard": "^0.2.11"
+        "io.jxcore.node": "file:io.jxcore.node",
+        "jxcore-cordova": "file:io.jxcore.node"
     },
     "cordova": {
         "plugins": {
@@ -41,13 +39,6 @@
             "cordova-plugin-background-mode": {},
             "io.jxcore.node": {},
             "cordova-plugin-media": {},
-            "cordova-plugin-crosswalk-webview": {
-                "XWALK_VERSION": "23+",
-                "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
-                "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
-                "XWALK_MODE": "embedded",
-                "XWALK_MULTIPLEAPK": "true"
-            },
             "cordova-plugin-remote-injection": {},
             "cordova-plugin-urlhandler": {
                 "URL_SCHEME": "jste"
