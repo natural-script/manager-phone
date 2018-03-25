@@ -155,7 +155,7 @@ app.get('/deviceForm', function (req, res) {
 });
 
 app.post('/autoCorrect', function (req, res) {
-  res.redirect(307, "https://jste-manager.herokuapp.com/autoCorrect");
+  res.redirect(307, "https://jste-manager.azurewebsites.net/autoCorrect");
 });
 
 app.post('/getVideoInfo', function (req, res) {
