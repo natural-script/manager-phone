@@ -1,2 +1,0 @@
-build/* filter=lfs diff=lfs merge=lfs -text
-src/www/jxcore/assets/framework.min.html filter=lfs diff=lfs merge=lfs -text
