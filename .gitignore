@@ -4,3 +4,4 @@ src/platforms
 src/node_modules
 src/plugins
 src/io.jxcore.node
+build
