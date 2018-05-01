@@ -1,7 +1,6 @@
-src/www/jxcore/node_modules
-src/package-lock.json
-src/platforms
-src/node_modules
-src/plugins
-src/io.jxcore.node
-build
+/src/www/jxcore/node_modules
+/src/package-lock.json
+/src/platforms
+/src/node_modules
+/src/plugins
+/src/io.jxcore.node
